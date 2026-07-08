@@ -68,11 +68,8 @@ export const FOOTER_LINKS: Link[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'github',
-<<<<<<< HEAD
     url: 'https://github.com/Sh3n1in',
-=======
     url: 'https://github.com/Dnzzk2',
->>>>>>> upstream/main
     icon: 'icon-[ri--github-fill]',
     count: 20,
   },

@@ -68,13 +68,8 @@
 @layer base {
   :root {
     /* 字体族 */
-<<<<<<< HEAD
     --font-lexend: 'Lexend', 'CJKEmDash', 'Numbers', 'ShangguSansSC-VF', ui-sans-serif, system-ui, sans-serif;
     --font-sans: 'CJKEmDash', 'Numbers', 'HanSerif','ShangguSansSC-VF', ui-sans-serif, system-ui, sans-serif;
-=======
-    --font-lexend: 'Lexend', 'Geist', 'ShangguSansSC-VF', ui-sans-serif, system-ui, sans-serif;
-    --font-sans: 'Geist', 'ShangguSansSC-VF', ui-sans-serif, system-ui, sans-serif;
->>>>>>> upstream/main
     --font-geist-mono: 'GeistMono', 'Input Mono', 'Fira Code', 'ShangguSansSC-VF', monospace;
 
     /* 基础色调 */
