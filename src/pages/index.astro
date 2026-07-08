@@ -34,17 +34,14 @@ if (hasPinnedPosts) {
       </h1>
       <div class="pro text-muted-foreground text-pretty">
         <p>
-          Litos is a simple and modern Astro blog theme, focusing on content display and reading experience. What's more, it's not just a
-          blog, but also a place to showcase your personal skills, projects, and daily life.
+          Litos is a clean and modern Astro blog theme focused on content presentation and reading experience. More than just a blog, it's a
+          personal space to showcase your skills, projects, and life.
         </p>
         <p>
-          Tailwind CSS is used to achieve an elegant responsive design, and React components are integrated to provide a smooth interactive
-          experience. It supports light and dark theme switching, is responsive, has a clean style, and offers a variety of configurable
-          article display layouts.
-        </p>
-        <p>
-          This theme is inspired by <a href="https://github.com/needim" target="_blank" rel="nofollow noreferrer"> @needim</a> and redesigned
-          by <a href="https://github.com/Dnzzk2" target="_blank" rel="nofollow noreferrer"> @Dnzzk2</a> based on Astro.
+          Built with Tailwind CSS for elegant responsive design and React components for smooth interactions. Features light/dark theme
+          switching, multiple article layouts, GitHub contribution charts, and more. Inspired by
+          <a href="https://github.com/needim" target="_blank" rel="nofollow noreferrer">@needim</a>, redesigned by
+          <a href="https://github.com/Dnzzk2" target="_blank" rel="nofollow noreferrer">@Dnzzk2</a> based on Astro.
         </p>
       </div>
       <div class="mt-6 flex gap-6">
@@ -62,7 +59,7 @@ if (hasPinnedPosts) {
           <div class="py-8 pb-10 px-6 max-md:px-6">
             <div class="px-2 max-md:px-0">
               <h2 class="text-2xl sm:text-3xl">Spotlight</h2>
-              <p class="text-muted-foreground mb-6 mt-1">Most recent contributions.</p>
+              <p class="text-muted-foreground mb-6 mt-1">GitHub contributions in the past year:</p>
             </div>
             <GithubContributions username={GITHUB_USERNAME} tooltipEnabled={TOOLTIP_ENABLED} client:load transition:animate="none" />
           </div>
@@ -76,7 +73,7 @@ if (hasPinnedPosts) {
           <div class="py-8 pb-10 px-6 max-md:px-6">
             <div class="px-2 max-md:px-0">
               <h2 class="text-2xl sm:text-3xl tracking-tight">Skills</h2>
-              <p class="text-muted-foreground mb-6 mt-1">Here are some skills I have used:</p>
+              <p class="text-muted-foreground mb-6 mt-1">It's not just skills, but also tools:</p>
             </div>
             <SkillsShowcase skillsData={SKILLS_DATA} />
           </div>

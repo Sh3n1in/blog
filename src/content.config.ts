@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders'
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { z } from 'astro/zod'
 import { POSTS_CONFIG } from '~/config'
 import type { CoverLayout, PostType } from '~/types'
 
@@ -24,6 +25,7 @@ const posts = defineCollection({
         coverLayout: z.custom<CoverLayout>().optional(),
         pinned: z.boolean().default(false),
         draft: z.boolean().default(false),
+        license: z.string().optional(),
       })
       .transform((data) => ({
         ...data,

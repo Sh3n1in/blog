@@ -1,7 +1,8 @@
 import type {
+  AnalyticsConfig,
+  CommentConfig,
   GithubConfig,
   Link,
-  PhotoData,
   PhotosConfig,
   PostConfig,
   ProjectConfig,
@@ -21,6 +22,8 @@ export const SITE: Site = {
   base: '/',
   author: '神林',
   ogImage: '/og-image.webp',
+  transition: false,
+  themeAnimation: true,
 }
 
 export const HEADER_LINKS: Link[] = [
@@ -65,9 +68,13 @@ export const FOOTER_LINKS: Link[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'github',
+<<<<<<< HEAD
     url: 'https://github.com/Sh3n1in',
+=======
+    url: 'https://github.com/Dnzzk2',
+>>>>>>> upstream/main
     icon: 'icon-[ri--github-fill]',
-    count: 11,
+    count: 20,
   },
   {
     name: 'twitter',
@@ -99,19 +106,33 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       skills: [
         {
           name: 'JavaScript',
-          icon: 'icon-[mdi--language-javascript]',
+          icon: 'icon-[skill-icons--javascript]',
+          url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
         },
         {
           name: 'CSS',
-          icon: 'icon-[mdi--language-css3]',
+          icon: 'icon-[skill-icons--css]',
+          url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
         },
         {
           name: 'HTML',
-          icon: 'icon-[mdi--language-html5]',
+          icon: 'icon-[skill-icons--html]',
+          url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
         },
         {
           name: 'TypeScript',
-          icon: 'icon-[mdi--language-typescript]',
+          icon: 'icon-[skill-icons--typescript]',
+          url: 'https://www.typescriptlang.org/',
+        },
+        {
+          name: 'Vue',
+          icon: 'icon-[skill-icons--vuejs-dark]',
+          url: 'https://vuejs.org/',
+        },
+        {
+          name: 'Sass',
+          icon: 'icon-[skill-icons--sass]',
+          url: 'https://sass-lang.com/',
         },
       ],
     },
@@ -120,27 +141,33 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       skills: [
         {
           name: 'Astro',
-          icon: 'icon-[lineicons--astro]',
+          icon: 'icon-[skill-icons--astro]',
+          url: 'https://astro.build/',
         },
         {
           name: 'Node.js',
-          icon: 'icon-[mdi--nodejs]',
+          icon: 'icon-[skill-icons--nodejs-dark]',
+          url: 'https://nodejs.org/',
         },
         {
           name: 'React',
-          icon: 'icon-[mdi--react]',
+          icon: 'icon-[skill-icons--react-dark]',
+          url: 'https://react.dev/',
         },
         {
           name: 'Next.js',
-          icon: 'icon-[devicon--nextjs]',
+          icon: 'icon-[skill-icons--nextjs-dark]',
+          url: 'https://nextjs.org/',
         },
         {
           name: 'Tailwind CSS',
-          icon: 'icon-[mdi--tailwind]',
+          icon: 'icon-[skill-icons--tailwindcss-dark]',
+          url: 'https://tailwindcss.com/',
         },
         {
-          name: 'Iconify',
-          icon: 'icon-[line-md--iconify2-static]',
+          name: 'Vite',
+          icon: 'icon-[skill-icons--vite-dark]',
+          url: 'https://vitejs.dev/',
         },
       ],
     },
@@ -149,19 +176,33 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       skills: [
         {
           name: 'Ubuntu',
-          icon: 'icon-[mdi--ubuntu]',
+          icon: 'icon-[skill-icons--ubuntu-dark]',
+          url: 'https://ubuntu.com/',
         },
         {
           name: 'Git',
-          icon: 'icon-[mdi--git]',
+          icon: 'icon-[skill-icons--git]',
+          url: 'https://git-scm.com/',
         },
         {
           name: 'MongoDB',
-          icon: 'icon-[lineicons--mongodb]',
+          icon: 'icon-[skill-icons--mongodb]',
+          url: 'https://www.mongodb.com/',
         },
         {
           name: 'Vercel',
-          icon: 'icon-[lineicons--vercel]',
+          icon: 'icon-[skill-icons--vercel-dark]',
+          url: 'https://vercel.com/',
+        },
+        {
+          name: 'VS Code',
+          icon: 'icon-[skill-icons--vscode-dark]',
+          url: 'https://code.visualstudio.com/',
+        },
+        {
+          name: 'Obsidian',
+          icon: 'icon-[skill-icons--obsidian-dark]',
+          url: 'https://obsidian.md/',
         },
       ],
     },
@@ -189,7 +230,7 @@ export const POSTS_CONFIG: PostConfig = {
   introduce: 'Posts List Page',
   author: '神林',
   homePageConfig: {
-    size: 5,
+    size: 2,
     type: 'compact',
   },
   postPageConfig: {
@@ -212,6 +253,25 @@ export const POSTS_CONFIG: PostConfig = {
   nextPostText: 'Next Post',
   prevPostText: 'Previous Post',
   recommendText: 'REC',
+  wordCountView: true,
+}
+
+export const COMMENT_CONFIG: CommentConfig = {
+  enabled: true,
+  system: 'gitalk',
+  gitalk: {
+    clientID: import.meta.env.PUBLIC_GITHUB_CLIENT_ID,
+    clientSecret: import.meta.env.PUBLIC_GITHUB_CLIENT_SECRET,
+    repo: 'gitalk-comment',
+    owner: 'Dnzzk2',
+    admin: ['Dnzzk2'],
+    language: 'en-US',
+    perPage: 5,
+    pagerDirection: 'last',
+    createIssueManually: false,
+    distractionFreeMode: false,
+    enableHotKey: true,
+  },
 }
 
 export const TAGS_CONFIG: TagsConfig = {
@@ -232,104 +292,13 @@ export const PHOTOS_CONFIG: PhotosConfig = {
   introduce: 'Here I will record some photos taken in daily life.',
 }
 
-export const PhotosList: PhotoData[] = [
-  {
-    title: "Friend's Adorable Cat",
-    icon: {
-      type: 'emoji',
-      value: '🌠',
-    },
-    description: 'So kawaii (*^ω^*)',
-    date: '2025-06-21',
-    travel: '',
-    photos: [
-      {
-        src: '/photos/cat1.webp',
-        alt: "Friend's Adorable Cat",
-        width: 1080,
-        height: 810,
-        variant: '4x3',
-      },
-      {
-        src: '/photos/cat2.webp',
-        alt: "Friend's Adorable Cat",
-        width: 1080,
-        height: 810,
-        variant: '4x3',
-      },
-      {
-        src: '/photos/cat3.webp',
-        alt: "Friend's Adorable Cat",
-        width: 1080,
-        height: 810,
-        variant: '4x3',
-      },
-      {
-        src: '/photos/cat4.webp',
-        alt: "Friend's Adorable Cat",
-        width: 1080,
-        height: 810,
-        variant: '4x3',
-      },
-    ],
+export const ANALYTICS_CONFIG: AnalyticsConfig = {
+  vercount: {
+    enabled: true,
   },
-  {
-    title: 'Ningbo · Dongqian Lake',
-    icon: {
-      type: 'emoji',
-      value: '🌅',
-    },
-    description: 'Cycling around Dongqian Lake. Although I got leg cramps a few times, the scenery was beautiful.',
-    date: '2025-03-01',
-    travel: '',
-    photos: [
-      {
-        src: '/photos/dqh1.webp',
-        alt: 'Ningbo · Dongqian Lake',
-        width: 1080,
-        height: 1358,
-        variant: '4x5',
-      },
-      {
-        src: '/photos/dqh2.jpg',
-        alt: 'Ningbo · Dongqian Lake',
-        width: 1080,
-        height: 1080,
-        variant: '1x1',
-      },
-      {
-        src: '/photos/dqh3.jpg',
-        alt: 'Ningbo · Dongqian Lake',
-        width: 1440,
-        height: 1080,
-        variant: '4x3',
-      },
-    ],
+  umami: {
+    enabled: false,
+    websiteId: 'Your websiteId in umami',
+    serverUrl: 'https://cloud.umami.is/script.js',
   },
-  {
-    title: 'Ningbo · Zhoushan',
-    icon: {
-      type: 'emoji',
-      value: '🌉',
-    },
-    description: '',
-    date: '2024-09-07',
-    travel: '',
-    photos: [
-      {
-        src: '/photos/zs1.webp',
-        alt: 'Ningbo · Zhoushan',
-        width: 1210,
-        height: 908,
-        variant: '4x3',
-      },
-      {
-        src: '/photos/zs2.webp',
-        alt: 'Ningbo · Zhoushan',
-        width: 1080,
-        height: 810,
-        variant: '4x3',
-      },
-    ],
-  },
-]
+}

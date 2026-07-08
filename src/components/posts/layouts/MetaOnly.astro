@@ -1,26 +1,27 @@
 ---
 import { formatDate } from '~/lib/utils'
-import { POSTS_CONFIG } from '~/config'
+import { ANALYTICS_CONFIG, POSTS_CONFIG } from '~/config'
 import Prose from '~/components/posts/base/Prose.astro'
 import Badge from '~/components/posts/base/Badge.astro'
 
 interface Props {
   frontmatter: any
   minutesRead?: string
+  wordCount?: number
 }
 
-const { frontmatter, minutesRead } = Astro.props
+const { frontmatter, minutesRead, wordCount } = Astro.props
 const recommendText = POSTS_CONFIG.recommendText
 ---
 
-<article class="relative fade-up animation-delay-100">
+<article class="relative fade-up">
   <div class="px-6 sm:px-8 py-4 sm:py-6 lg:py-8">
-    <div class="max-w-3xl mx-auto">
+    <div class="global-layout-width mx-auto">
       <header>
         <div class="space-y-4 md:space-y-5">
           {frontmatter.description && <p class="text-sm text-muted-foreground/90 leading-relaxed">{frontmatter.description}</p>}
 
-          <div class="text-2xl lg:text-3xl font-semibold leading-tight" data-pagefind-body>
+          <div class="text-xl lg:text-2xl font-semibold leading-tight" data-pagefind-body>
             {frontmatter.title}
           </div>
 
@@ -30,20 +31,37 @@ const recommendText = POSTS_CONFIG.recommendText
               <time datetime={frontmatter.pubDate.toISOString()}>
                 {formatDate(frontmatter.pubDate)}
               </time>
+              {
+                frontmatter.updatedDate && (
+                  <div class="flex items-center gap-1.5">
+                    / Update
+                    <time datetime={frontmatter.updatedDate.toISOString()}>{formatDate(frontmatter.updatedDate)}</time>
+                  </div>
+                )
+              }
             </div>
-            {
-              frontmatter.updatedDate && (
-                <div class="flex items-center gap-1.5">
-                  <span class="icon-[ph--clock-clockwise] w-4 h-4 opacity-85" />
-                  <time datetime={frontmatter.updatedDate.toISOString()}>{formatDate(frontmatter.updatedDate)}</time>
-                </div>
-              )
-            }
+
             {
               minutesRead && (
                 <div class="flex items-center gap-1.5">
                   <span class="icon-[ph--book-open-text] w-4 h-4 opacity-85" />
                   <span>{minutesRead} mins</span>
+                </div>
+              )
+            }
+            {
+              POSTS_CONFIG.wordCountView && wordCount && (
+                <div class="flex items-center gap-1.5">
+                  <span class="icon-[ph--pencil-simple-line] w-4 h-4 opacity-85" />
+                  <span>{wordCount} words</span>
+                </div>
+              )
+            }
+            {
+              ANALYTICS_CONFIG.vercount?.enabled && (
+                <div class="flex items-center gap-1.5">
+                  <span class="icon-[ph--eye] w-4 h-4 opacity-85" />
+                  <span id="vercount_value_page_pv">Loading</span> views
                 </div>
               )
             }
