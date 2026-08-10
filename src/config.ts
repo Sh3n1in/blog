@@ -261,7 +261,7 @@ export const COMMENT_CONFIG: CommentConfig = {
     repo: 'gitalk-comment',
     owner: 'Sh3n1in',
     admin: ['Sh3n1in'],
-    language: 'en-US',
+    language: 'zh-CN',
     perPage: 5,
     pagerDirection: 'last',
     createIssueManually: false,
