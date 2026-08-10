@@ -13,6 +13,19 @@ const { id, title } = Astro.props
   import { COMMENT_CONFIG } from '~/config'
   const { gitalk } = COMMENT_CONFIG
 
+  // GitHub 已废弃 clientID:clientSecret 的 Basic Auth（返回 401 Bad credentials）。
+  // 在请求层丢弃 Basic 类型的 Authorization 头（未登录的评论/issue 读取改为匿名，
+  // 公开仓库无需认证）；登录后的 token 请求（Authorization: token/bearer）不受影响。
+  ;(function patchGithubBasicAuth() {
+    const origSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader
+    XMLHttpRequest.prototype.setRequestHeader = function (name: string, value: string) {
+      if (name.toLowerCase() === 'authorization' && typeof value === 'string' && value.startsWith('Basic')) {
+        return
+      }
+      return origSetRequestHeader.call(this, name, value)
+    }
+  })()
+
   let observer: IntersectionObserver | null = null
   let isInitialized = false
 
@@ -40,6 +53,8 @@ const { id, title } = Astro.props
         createIssueManually: gitalk.createIssueManually || false,
         distractionFreeMode: gitalk.distractionFreeMode || false,
         enableHotKey: gitalk.enableHotKey !== false,
+        // Gitalk 默认公共代理已失效(404)，使用自建 Vercel 函数做 token 交换
+        proxy: `${window.location.origin}/api/oauth/access_token`,
         id: id,
         title: title,
       })
